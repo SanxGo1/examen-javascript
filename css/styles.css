@@ -1,0 +1,119 @@
+:root {
+  --ink: #352b2b;
+  --paper: #fffaf6;
+  --bg: #f3e8df;
+  --muted: #786866;
+  --accent: #a65d59;
+  --accent-dark: #834744;
+  --line: #e4d5cc;
+  --radius: 14px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html {
+  min-height: 100%;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font);
+  background: radial-gradient(ellipse at top left, #fff8f1 0, transparent 42%), var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+}
+#toolbar {
+  display: grid;
+  grid-template-columns: 2fr, 1fr, 1fr,1fr;
+  gap: 1rem;
+  align-items: end;
+  padding: 1.25rem;
+  background: var(--paper);
+  border: 1px solid rgba(164, 126, 113, 0.18);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 35px rgba(75, 48, 41, 0.08);
+}
+#main-content {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 5vw, 2.5rem);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+.field label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #a4938e;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(166, 93, 89, 0.14);
+}
+button,
+.button {
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+button:hover,
+.button:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+button:focus-visible,
+.button:focus-visible {
+  outline: 3px solid rgba(166, 93, 89, 0.35);
+  outline-offset: 3px;
+}
+::selection {
+  background: #e8c5bd;
+  color: var(--ink);
+}
+@media (max-width: 680px) {
+  #toolbar {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+  #main-content {
+    padding-top: 1.5rem;
+  }
+}

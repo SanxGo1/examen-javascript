@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecno-Stock</title>
+    <link rel="stylesheet" href="css/styles.css">   
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Tecno-Stock</h1>
+        </div>
+        <button id="cart-toggle">Carrito <span id="contador" class="badge">0</span></button>
+    </header>
+    <main id="main-content">
+        <section id="toolbar">
+            <div>
+                <label for="filtro">Filtrar por producto</label>
+                <input type="text" id="filtro" placeholder="Ingrese Tipo de producto">
+            </div>
+            <div class="field">
+                <label for="categoria">Filtrar por categoría:</label>
+                <select id="categoria">
+                    <option value="">Todas</option>
+                    <option value="camisas">Camisas</option>
+                    <option value="perifericos">Perifericos</option>
+                    <option value="tazas">Tazas</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="orden">Ordenar por precio:</label>
+                <select id="orden">
+                    <option value="">Ninguno</option>
+                    <option value="asc">Mayor a menor</option>
+                    <option value="desc">Menor a mayor</option>
+                </select>
+                <label for="Disponibilidad" class="field">Disponibilidad:</label>
+            <select id="Disponibilidad">
+                    <option value="">Todos</option>
+                    <option value="true">Disponible</option>
+                    <option value="false">No disponible</option>
+                </select>
+            </div>
+            
+        </section>
+        <div class="productos">
+            <h2>Productos</h2>
+            <p id="status" class="status" ></p>
+        </div>
+        <div class="matrix-head">
+            <span>Vista</span>
+            <span>Nombre</span>
+            <span>Precio</span>
+            <span>Categoria</span>
+            <span>Disponibilidad</span>
+        </div>
+    <aside id="cart" class="cart">
+            <h2>Carrito de compras<small> Tu carrito</small></h2>
+            <button id="close-cart">X</button>
+            <ul id="cart-items"></ul>
+            <div>
+                <p>Total: $<span id="total">0</span></p>
+            <div class="cart-actions"></div>
+                <button id="checkout">Finalizar compra</button>
+                <button id="clear-cart">Vaciar carrito</button>
+            </div>
+    </aside>
+<script src="js/api.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script src="storage.js"></script>
+</body>
+</html>
