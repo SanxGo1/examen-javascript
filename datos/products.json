@@ -1,3 +1,4 @@
+[
 {
   "id": 101,
   "nombre": "Teclado mecánico",
@@ -6,7 +7,7 @@
   "stock": 8,
   "description": "Teclado USB para uso diario",
   "activo": "verdadero"
-}
+},
 {
     "id": 102,
     "nombre": "Mouse inalámbrico",
@@ -15,7 +16,7 @@
     "stock": 15,
     "description": "Mouse inalámbrico con sensor óptico",
     "activo": "verdadero"
-}
+},
 {
     "id": 103,
     "nombre": "Camisa de algodón",
@@ -24,7 +25,7 @@
     "stock": 5,
     "description": "Camisa de algodón de alta calidad",
     "activo": "verdadero"
-}
+},
 {
     "id": 104,
     "nombre":"Taza de cerámica",
@@ -33,7 +34,7 @@
     "stock": 5,
     "description":"Taza de cerámica con diseño personalizado",
     "activo":"falso"
-}
+},
 {
     "id":105,
     "nombre":"Auriculares Bluetooth",
@@ -42,7 +43,7 @@
     "stock": 4,
     "description":"Auriculares inalámbricos con cancelación de ruido",
     "activo":"verdadero"
-}
+},
 {
     "id":106,
     "nombre":"Camiseta de algodón",
@@ -52,3 +53,4 @@
     "description":"Camiseta de algodón suave y cómoda",
     "activo":"falso"
 }
+]
