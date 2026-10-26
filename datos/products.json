@@ -1,56 +1,62 @@
 [
-{
-  "id": 101,
-  "nombre": "Teclado mecánico",
-  "categoría": "Perifericos",
-  "precio": 190000,
-  "stock": 8,
-  "description": "Teclado USB para uso diario",
-  "activo": "verdadero"
-},
-{
+  {
+    "id": 101,
+    "name": "Teclado mecánico",
+    "category": "Periféricos",
+    "price": 190000,
+    "stock": 8,
+    "description": "Teclado USB para uso diario",
+    "image": "https://via.placeholder.com/300?text=Teclado",
+    "active": true
+  },
+  {
     "id": 102,
-    "nombre": "Mouse inalámbrico",
-    "categoría": "Perifericos",
-    "precio": 123000,
+    "name": "Mouse inalámbrico",
+    "category": "Periféricos",
+    "price": 123000,
     "stock": 15,
     "description": "Mouse inalámbrico con sensor óptico",
-    "activo": "verdadero"
-},
-{
+    "image": "https://via.placeholder.com/300?text=Mouse",
+    "active": true
+  },
+  {
     "id": 103,
-    "nombre": "Camisa de algodón",
-    "categoría": "Camisas",
-    "precio": 58000,
+    "name": "Camisa de algodón",
+    "category": "Camisas",
+    "price": 58000,
     "stock": 5,
     "description": "Camisa de algodón de alta calidad",
-    "activo": "verdadero"
-},
-{
+    "image": "https://via.placeholder.com/300?text=Camisa",
+    "active": true
+  },
+  {
     "id": 104,
-    "nombre":"Taza de cerámica",
-    "categoría":"Tazas",
-    "precio": 75000,
+    "name": "Taza de cerámica",
+    "category": "Tazas",
+    "price": 75000,
     "stock": 5,
-    "description":"Taza de cerámica con diseño personalizado",
-    "activo":"falso"
-},
-{
-    "id":105,
-    "nombre":"Auriculares Bluetooth",
-    "categoría":"Perifericos",
-    "precio": 45000,
+    "description": "Taza de cerámica con diseño personalizado",
+    "image": "https://via.placeholder.com/300?text=Taza",
+    "active": false
+  },
+  {
+    "id": 105,
+    "name": "Auriculares Bluetooth",
+    "category": "Periféricos",
+    "price": 45000,
     "stock": 4,
-    "description":"Auriculares inalámbricos con cancelación de ruido",
-    "activo":"verdadero"
-},
-{
-    "id":106,
-    "nombre":"Camiseta de algodón",
-    "categoría":"Camisas",
-    "precio": 35000,
+    "description": "Auriculares inalámbricos con cancelación de ruido",
+    "image": "https://via.placeholder.com/300?text=Auriculares",
+    "active": true
+  },
+  {
+    "id": 106,
+    "name": "Camiseta de algodón",
+    "category": "Camisas",
+    "price": 35000,
     "stock": 10,
-    "description":"Camiseta de algodón suave y cómoda",
-    "activo":"falso"
-}
+    "description": "Camiseta de algodón suave y cómoda",
+    "image": "https://via.placeholder.com/300?text=Camiseta",
+    "active": false
+  }
 ]

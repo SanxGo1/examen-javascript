@@ -1,6 +1,6 @@
-import { loadCart } from './storage.js';
+import { loadCart, saveCart } from './storage.js';
 
-export class cart {
+export class Cart {
     constructor(onUpdate = () => {}) {
         this.items = loadCart() || [];
         this.onUpdate = onUpdate;
@@ -9,32 +9,32 @@ export class cart {
     addItem(product) {
         if (!product || typeof product !== 'object') return;
 
-        const id = product.id ?? product.productId;
-        const existingItem = this.items.find(
-            (item) => (item.id ?? item.productId) === id
-        );
+        const id = String(product.id ?? product.productId);
+        const existingItem = this.items.find((item) => String(item.id) === id);
 
         if (existingItem) {
-            existingItem.quantity = (Number(existingItem.quantity) || 1) + (Number(product.quantity) || 1);
+            existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
         } else {
-            this.items.push({ ...product, quantity: Number(product.quantity) || 1 });
+            this.items.push({
+                id: id,
+                name: product.name,
+                price: Number(product.price) || 0,
+                stock: Number(product.stock) || 0,
+                image: product.image || '',
+                quantity: 1
+            });
         }
 
         this._notify();
     }
 
-    // Keep compatibility with callers using the original method spelling.
-    additem(product) {
-        this.addItem(product);
-    }
-
     removeItem(id) {
-        this.items = this.items.filter((item) => (item.id ?? item.productId) !== id);
+        this.items = this.items.filter((item) => String(item.id) !== String(id));
         this._notify();
     }
 
     updateQuantity(id, quantity) {
-        const item = this.items.find((entry) => (entry.id ?? entry.productId) === id);
+        const item = this.items.find((entry) => String(entry.id) === String(id));
         const amount = Number(quantity);
         if (!item || !Number.isFinite(amount)) return;
 
@@ -52,18 +52,23 @@ export class cart {
         this._notify();
     }
 
-    getTotal() {
+    getTotalPrice() {
         return this.items.reduce(
             (total, item) => total + (Number(item.price) || 0) * (Number(item.quantity) || 1),
             0
         );
     }
 
-    getCount() {
+    getTotalItems() {
         return this.items.reduce((count, item) => count + (Number(item.quantity) || 1), 0);
     }
 
+    // Alias de compatibilidad
+    getTotal() { return this.getTotalPrice(); }
+    getCount() { return this.getTotalItems(); }
+
     _notify() {
-        this.onUpdate(this.items, { total: this.getTotal(), count: this.getCount() });
+        saveCart(this.items);
+        this.onUpdate(this);
     }
 }

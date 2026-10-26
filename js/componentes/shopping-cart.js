@@ -22,27 +22,27 @@ export function renderShoppingCart(container, cart, onUpdateQty, onRemoveItem, o
         itemEl.className = 'cart-item';
         itemEl.innerHTML = `
             <div class="cart-item-info">
-                <h4>${escapeHTML(item.product.name)}</h4>
-                <span class="cart-item-price">$${item.product.price.toFixed(2)} c/u</span>
+                <h4>${escapeHTML(item.name)}</h4>
+                <span class="cart-item-price">$${Number(item.price).toLocaleString('es-CO')} c/u</span>
             </div>
             <div class="cart-item-actions">
-                <button class="btn-qty-minus" data-id="${escapeHTML(item.product.id)}">-</button>
+                <button class="btn-qty-minus" data-id="${escapeHTML(item.id)}">-</button>
                 <span class="cart-item-qty">${item.quantity}</span>
-                <button class="btn-qty-plus" data-id="${escapeHTML(item.product.id)}">+</button>
-                <button class="btn-remove" data-id="${escapeHTML(item.product.id)}">🗑️</button>
+                <button class="btn-qty-plus" data-id="${escapeHTML(item.id)}">+</button>
+                <button class="btn-remove" data-id="${escapeHTML(item.id)}">🗑️</button>
             </div>
         `;
 
         itemEl.querySelector('.btn-qty-minus').addEventListener('click', () => {
-            onUpdateQty(item.product.id, item.quantity - 1);
+            onUpdateQty(item.id, item.quantity - 1);
         });
 
         itemEl.querySelector('.btn-qty-plus').addEventListener('click', () => {
-            onUpdateQty(item.product.id, item.quantity + 1);
+            onUpdateQty(item.id, item.quantity + 1);
         });
 
         itemEl.querySelector('.btn-remove').addEventListener('click', () => {
-            onRemoveItem(item.product.id);
+            onRemoveItem(item.id);
         });
 
         list.appendChild(itemEl);
@@ -55,7 +55,7 @@ export function renderShoppingCart(container, cart, onUpdateQty, onRemoveItem, o
     footer.innerHTML = `
         <div class="cart-total">
             <span>Total:</span>
-            <strong>$${cart.getTotalPrice().toFixed(2)}</strong>
+            <strong>$${cart.getTotalPrice().toLocaleString('es-CO')}</strong>
         </div>
         <button class="btn-checkout">Finalizar Compra</button>
     `;

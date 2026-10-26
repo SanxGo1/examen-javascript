@@ -6,25 +6,34 @@ export async function fetchProducts() {
         }
         const data = await response.json();
 
-        // Validación estricta de datos recibidos de la API
         if (!Array.isArray(data)) {
             throw new Error('El formato del catálogo no es válido.');
         }
 
-        return data.map(item => {
-            if (typeof item.id !== 'string' && typeof item.id !== 'number') throw new Error('ID de producto inválido');
-            if (typeof item.name !== 'string') throw new Error('Nombre de producto inválido');
-            if (typeof item.price !== 'number' || item.price < 0) throw new Error('Precio de producto inválido');
-            if (typeof item.stock !== 'number' || item.stock < 0) throw new Error('Stock de producto inválido');
+        // Filtramos solo los productos activos (maneja booleanos o strings "verdadero")
+        const activeItems = data.filter(item => 
+            item.active === true || item.activo === true || item.activo === 'verdadero'
+        );
+
+        return activeItems.map(item => {
+            const id = item.id;
+            const name = item.name || item.nombre;
+            const price = Number(item.price ?? item.precio);
+            const stock = Number(item.stock);
+
+            if (typeof id !== 'string' && typeof id !== 'number') throw new Error('ID de producto inválido');
+            if (typeof name !== 'string') throw new Error('Nombre de producto inválido');
+            if (isNaN(price) || price < 0) throw new Error('Precio de producto inválido');
+            if (isNaN(stock) || stock < 0) throw new Error('Stock de producto inválido');
 
             return {
-                id: String(item.id),
-                name: item.name,
-                price: Number(item.price),
-                stock: Number(item.stock),
-                category: String(item.category || 'General'),
+                id: String(id),
+                name: name,
+                price: price,
+                stock: stock,
+                category: String(item.category || item.categoría || 'General'),
                 image: String(item.image || ''),
-                description: String(item.description || '')
+                description: String(item.description || item.descripción || '')
             };
         });
     } catch (error) {

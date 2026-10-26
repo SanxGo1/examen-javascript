@@ -1,8 +1,7 @@
-import { fetchProducts } from '.api.js';
-import { Cart } from '.cart.js';
-import { renderProductList } from 'components/product-list.js';
-import { renderShoppingCart } from '.componentes/shopping-cart.js';
-
+import { fetchProducts } from './api.js';
+import { Cart } from './cart.js';
+import { renderProductList } from './components/product-list.js';
+import { renderShoppingCart } from './components/shopping-cart.js';
 document.addEventListener('DOMContentLoaded', async () => {
     const productContainer = document.getElementById('product-catalog');
     const cartContainer = document.getElementById('shopping-cart');
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         cartSidebar.classList.remove('open');
     });
 
-    // Eventos de Búsqueda y Fil
+    // Eventos de Búsqueda y Filtro
     searchInput.addEventListener('input', filterAndRenderProducts);
     categoryFilter.addEventListener('change', filterAndRenderProducts);
 
