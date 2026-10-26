@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: var(--font);
-  background: radial-gradient(ellipse at top left, #fff8f1 0, transparent 42%), var(--bg);
+  background: radial-gradient(ellipse at top left, #ce8e8e 0, transparent 97%), var(--bg);
   color: var(--ink);
   line-height: 1.55;
 }
