@@ -1,74 +1,83 @@
-import { loadCart, saveCart } from './storage.js';
+import { saveCart, loadCart } from './storage.js';
 
-export class Cart {
-    constructor(onUpdate = () => {}) {
-        this.items = loadCart() || [];
-        this.onUpdate = onUpdate;
+export class ShoppingCartManager {
+  constructor() {
+    this.items = loadCart();
+  }
+
+  getItems() {
+    return this.items;
+  }
+
+  addItem(product, quantity = 1) {
+    if (!product.activo || product.stock <= 0) {
+      throw new Error("El producto está agotado o inactivo (P08).");
     }
 
-    addItem(product) {
-        if (!product || typeof product !== 'object') return;
+    const existingIndex = this.items.findIndex(item => item.id === product.id);
+    const currentQtyInCart = existingIndex >= 0 ? this.items[existingIndex].cantidad : 0;
+    const requestedTotal = currentQtyInCart + quantity;
 
-        const id = String(product.id ?? product.productId);
-        const existingItem = this.items.find((item) => String(item.id) === id);
+    if (requestedTotal > product.stock) {
+      throw new Error(`No hay suficiente stock disponible. Stock máximo: ${product.stock} (P07).`);
+    }
 
-        if (existingItem) {
-            existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
-        } else {
-            this.items.push({
-                id: id,
-                name: product.name,
-                price: Number(product.price) || 0,
-                stock: Number(product.stock) || 0,
-                image: product.image || '',
-                quantity: 1
-            });
+    if (existingIndex >= 0) {
+      this.items[existingIndex].cantidad = requestedTotal;
+    } else {
+      this.items.push({
+        id: product.id,
+        nombre: product.nombre,
+        precio: product.precio,
+        stock: product.stock,
+        imagen: product.imagen,
+        cantidad: quantity
+      });
+    }
+
+    this.persist();
+  }
+
+  updateQuantity(productId, newQuantity) {
+    const index = this.items.findIndex(item => item.id === productId);
+    if (index >= 0) {
+      if (newQuantity <= 0) {
+        this.removeItem(productId);
+      } else {
+        if (newQuantity > this.items[index].stock) {
+          throw new Error(`La cantidad supera el stock disponible (${this.items[index].stock}).`);
         }
-
-        this._notify();
+        this.items[index].cantidad = newQuantity;
+        this.persist();
+      }
     }
+  }
 
-    removeItem(id) {
-        this.items = this.items.filter((item) => String(item.id) !== String(id));
-        this._notify();
-    }
+  removeItem(productId) {
+    this.items = this.items.filter(item => item.id !== productId);
+    this.persist();
+  }
 
-    updateQuantity(id, quantity) {
-        const item = this.items.find((entry) => String(entry.id) === String(id));
-        const amount = Number(quantity);
-        if (!item || !Number.isFinite(amount)) return;
+  clear() {
+    this.items = [];
+    this.persist();
+  }
 
-        if (amount <= 0) {
-            this.removeItem(id);
-            return;
-        }
+  calculateTotals() {
+    const subtotal = this.items.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+    const appliesDiscount = subtotal >= 300000;
+    const discount = appliesDiscount ? subtotal * 0.10 : 0;
+    const total = subtotal - discount;
 
-        item.quantity = amount;
-        this._notify();
-    }
+    return {
+      subtotal,
+      appliesDiscount,
+      discount,
+      total
+    };
+  }
 
-    clear() {
-        this.items = [];
-        this._notify();
-    }
-
-    getTotalPrice() {
-        return this.items.reduce(
-            (total, item) => total + (Number(item.price) || 0) * (Number(item.quantity) || 1),
-            0
-        );
-    }
-
-    getTotalItems() {
-        return this.items.reduce((count, item) => count + (Number(item.quantity) || 1), 0);
-    }
-
-    // Alias de compatibilidad
-    getTotal() { return this.getTotalPrice(); }
-    getCount() { return this.getTotalItems(); }
-
-    _notify() {
-        saveCart(this.items);
-        this.onUpdate(this);
-    }
+  persist() {
+    saveCart(this.items);
+  }
 }

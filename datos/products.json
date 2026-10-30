@@ -1,62 +1,110 @@
 [
   {
-    "id": 101,
-    "name": "Teclado mecánico",
-    "category": "Periféricos",
-    "price": 190000,
-    "stock": 8,
-    "description": "Teclado USB para uso diario",
-    "image": "https://via.placeholder.com/300?text=Teclado",
-    "active": true
-  },
-  {
-    "id": 102,
-    "name": "Mouse inalámbrico",
-    "category": "Periféricos",
-    "price": 123000,
-    "stock": 15,
-    "description": "Mouse inalámbrico con sensor óptico",
-    "image": "https://via.placeholder.com/300?text=Mouse",
-    "active": true
-  },
-  {
-    "id": 103,
-    "name": "Camisa de algodón",
-    "category": "Camisas",
-    "price": 58000,
-    "stock": 5,
-    "description": "Camisa de algodón de alta calidad",
-    "image": "https://via.placeholder.com/300?text=Camisa",
-    "active": true
-  },
-  {
-    "id": 104,
-    "name": "Taza de cerámica",
-    "category": "Tazas",
-    "price": 75000,
-    "stock": 5,
-    "description": "Taza de cerámica con diseño personalizado",
-    "image": "https://via.placeholder.com/300?text=Taza",
-    "active": false
-  },
-  {
-    "id": 105,
-    "name": "Auriculares Bluetooth",
-    "category": "Periféricos",
-    "price": 45000,
-    "stock": 4,
-    "description": "Auriculares inalámbricos con cancelación de ruido",
-    "image": "https://via.placeholder.com/300?text=Auriculares",
-    "active": true
-  },
-  {
-    "id": 106,
-    "name": "Camiseta de algodón",
-    "category": "Camisas",
-    "price": 35000,
+    "id": 1,
+    "nombre": "Teclado Mecánico RGB Pastel",
+    "categoria": "Periféricos",
+    "precio": 180000,
     "stock": 10,
-    "description": "Camiseta de algodón suave y cómoda",
-    "image": "https://via.placeholder.com/300?text=Camiseta",
-    "active": false
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 2,
+    "nombre": "Mouse Ergonómico Inalámbrico",
+    "categoria": "Periféricos",
+    "precio": 95000,
+    "stock": 8,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 3,
+    "nombre": "Monitor Curvo 27 pulgadas 4K",
+    "categoria": "Monitores",
+    "precio": 920000,
+    "stock": 4,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 4,
+    "nombre": "Audífonos Diadema Bluetooth Cloud",
+    "categoria": "Audio",
+    "precio": 220000,
+    "stock": 0,
+    "activo": false,
+    "imagen": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 5,
+    "nombre": "Silla de Escritorio Ergonómica",
+    "categoria": "Mobiliario",
+    "precio": 720000,
+    "stock": 3,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 6,
+    "nombre": "Pad Mouse XL Minimalista",
+    "categoria": "Accesorios",
+    "precio": 60000,
+    "stock": 15,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 7,
+    "nombre": "Lámpara LED de Escritorio Regulable",
+    "categoria": "Iluminación",
+    "precio": 140000,
+    "stock": 7,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 8,
+    "nombre": "Soporte de Aluminio para Laptop",
+    "categoria": "Accesorios",
+    "precio": 110000,
+    "stock": 12,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 9,
+    "nombre": "Micrófono Condensador USB Streaming",
+    "categoria": "Audio",
+    "precio": 310000,
+    "stock": 5,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 10,
+    "nombre": "Webcam HD 1080p con Anillo de Luz",
+    "categoria": "Periféricos",
+    "precio": 190000,
+    "stock": 6,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 11,
+    "nombre": "Hub USB-C Multipuerto 7 en 1",
+    "categoria": "Accesorios",
+    "precio": 130000,
+    "stock": 10,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "id": 12,
+    "nombre": "Control Inalámbrico Edición Pastel",
+    "categoria": "Gaming",
+    "precio": 250000,
+    "stock": 2,
+    "activo": true,
+    "imagen": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=500&q=80"
   }
 ]
